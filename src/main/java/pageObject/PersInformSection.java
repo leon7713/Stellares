@@ -15,6 +15,7 @@ public class PersInformSection {
     By lastName = By.id("user-last-name-input");
     By eMail = By.id("user-email-address-input");
     By phone = By.id("user-phone-number-input");
+    By activeIcon = By.xpath("//*[@class = \"steps-navigation__item used_nav_step clickable active\"]");
 
     public WebElement getFirstName() {
         return driver.findElement(firstName);
@@ -31,4 +32,6 @@ public class PersInformSection {
     public WebElement getPhone() {
         return driver.findElement(phone);
     }
+
+    public WebElement getActiveIcon() {return driver.findElement(activeIcon);}
 }

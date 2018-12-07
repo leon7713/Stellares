@@ -47,13 +47,8 @@ public class base {
             driver = new InternetExplorerDriver();
         }
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         return driver;
-    }
-
-    public void getScreenshot(String result) throws IOException {
-        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(src, new File("C://test//" + result + "screenshot.png"));
     }
 
 }
