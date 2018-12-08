@@ -1,14 +1,9 @@
 package stellares;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pageObject.*;
 import resourses.base;
 
-import java.io.File;
 import java.io.IOException;
 
 public class LeonTest extends base {
@@ -58,7 +53,7 @@ public class LeonTest extends base {
         Thread.sleep(timeOut);
 
         fe.getRocketIcon().isDisplayed();
-        System.out.println(fe.getSuccessMessage().getText());
+        fe.getSuccessMessage().isDisplayed();
     }
 
     @Test//(dataProvider = "getData")
@@ -72,26 +67,6 @@ public class LeonTest extends base {
         Thread.sleep(timeOut);
         cs.getNextBtn().click();
         pis.getActiveIcon().isDisplayed();
-    }
-
-    @AfterMethod
-    public void afterMethod(ITestResult result) {
-        try
-        {
-            if(result.getStatus() == ITestResult.FAILURE)
-            {
-                File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-                try {
-                    FileUtils.copyFile(src, new File("C:\\test\\screenshot.png"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
     }
 
     @DataProvider
